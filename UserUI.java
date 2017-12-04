@@ -19,11 +19,13 @@ public class UserUI {
 
     public void init() {
 // вывод в консоль первого сообщения-указания для определения имени пользователя
-        System.out.println("Представься...");
+        String hello = "Представься...";
+        System.out.println(hello);
 // считываение введеных данных и занесение их в переменную name, по которой к пользователю будут обращаться, как по имени
         String name = scanner.nextLine();
 // вывод в консоль второго сообщения-указания для выбора дальнейших действий
-        System.out.printf("%s, что сделать?\n", name);
+        String whatDo = ", что сделать?";
+        System.out.println(name + whatDo);
 
 // переменные для хранения пунктов меню
         String menuSection0 = ". Add\n";
@@ -38,6 +40,8 @@ public class UserUI {
 // переменная для хранения введенного пользователем числа, указывающего на его выбор конкретного пункта меню
         int answerMenuStart = scanner.nextInt();
 // логика обработки введенного пользователем числа
+
+
         if(answerMenuStart > 4 || answerMenuStart < 0) {
             System.out.println("Необходимо указать цифру, соответствующую выбранному полю меню...");
             System.out.println(menuStart + "\nSelect:");
@@ -48,7 +52,7 @@ public class UserUI {
             String nameProduct = scanner.nextLine();
             System.out.println(name + " , а теперь введи цену...");
             int priceProduct = scanner.nextInt();
-            tracker.addProduct(new Product(nameProduct, priceProduct));
+            tracker.addProduct(new Product(nameProduct, priceProduct, 999));
 
         } else if (answerMenuStart == 1) {
             System.out.println("Вы ввели: " + answerMenuStart);
@@ -57,7 +61,7 @@ public class UserUI {
             String nameProduct = scanner.nextLine();
             System.out.println(name + " , а теперь введи артикул...");
             int idProduct = scanner.nextInt();
-            tracker.removeProduct(new Product(nameProduct, null, idProduct));
+            tracker.removeProduct(new Product(nameProduct, 0, idProduct));
 
         } else if (answerMenuStart == 2) {
             System.out.println("Вы ввели: " + answerMenuStart);
