@@ -1,5 +1,8 @@
 package shop;
 
+// класс для считывания введных данных с консоли
+import java.util.Scanner;
+
 // класс Tracker
 // реализует логику работы с Product
 // поиск, удаление, добавление, изменение
@@ -19,6 +22,58 @@ public class Tracker {
         idCount++;
         return this.idCount;
     }
+
+    // ссылка на класс Scaner для возможности ввода пользоателем данных
+    Scanner scanner = new Scanner(System.in);
+
+
+    public String menuChoise(int choise) {
+
+        String menuStart = new UserUI().menuStart;
+        String name = new UserUI().name;
+
+        if(choise > 4 || choise < 0) {
+            System.out.println("Необходимо указать цифру, соответствующую выбранному полю меню...");
+            System.out.println(menuStart + "\nSelect:");
+        } else if (choise == 0) {
+            System.out.println("Вы ввели: " + choise);
+            System.out.println("Для этого действия необходимо ввести наименование продукта, его цену и артикул...");
+            System.out.println(name + " , введи наименование...");
+            String nameProduct = scanner.nextLine();
+            System.out.println(name + " , введи цену...");
+            int priceProduct = scanner.nextInt();
+            System.out.println(name + " , введи артикул...");
+            int idProduct = scanner.nextInt();
+            addProduct(new Product(nameProduct, priceProduct, idProduct));
+
+        } else if (choise == 1) {
+            System.out.println("Вы ввели: " + choise);
+            System.out.println("Для этого действия необходимо ввести наименование продукта или его артикул,\n если какой-то из пунктов неизвестен, то пропустите его нажав ENTER...");
+            System.out.println(name + " , введи наименование...");
+            String nameProduct = scanner.nextLine();
+            System.out.println(name + " , а теперь введи артикул...");
+            int idProduct = scanner.nextInt();
+            removeProduct(new Product(nameProduct, 0, idProduct));
+
+        } else if (choise == 2) {
+            System.out.println("Вы ввели: " + choise);
+        } else if (choise == 3) {
+            System.out.println("Вы ввели: " + choise);
+            System.out.println("Для этого действия необходимо ввести наименование продукта или его артикул,\n если какой-то из пунктов неизвестен, то пропустите его нажав ENTER...");
+            String nameProduct = scanner.nextLine();
+            System.out.println(name + " , а теперь введи артикул...");
+            int idProduct = scanner.nextInt();
+            Product prod = findProduct(new Product(nameProduct, 0, idProduct));
+            String prodFind = prod.getName();
+
+
+        } else if (choise == 4) {
+            System.out.println("Вы ввели: " + choise);
+        }
+
+        return menuStart;
+    }
+
     // метод для добавления продукта в массив Product
     // продукт добавляется в ячейку массива в соответствии со значением переменной index
     // при добавлении элемента также инкрементируется значение переменной index
@@ -39,6 +94,7 @@ public class Tracker {
                 return prod;
             }
         }
+        return prod;
     }
     // метод для поиска продукта в массиве Product
     // принимает продукт необходимый к поиску
