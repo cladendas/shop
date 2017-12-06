@@ -143,6 +143,7 @@ public class Tracker {
         }
         return null;
     }
+
     // метод для изменения продукта в массиве Product
     // принимает продукт необходимый к изменению
     // если в массиве Product найден искомый prod, то заменяем найденный продукт на prod
@@ -161,5 +162,15 @@ public class Tracker {
         for(Product prod : products) {
             System.out.println(prod);
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }
