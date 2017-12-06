@@ -151,7 +151,7 @@ public class Tracker {
         for (Product pr : products) {
             if (pr.equals(prod)) {
                 pr = prod;
-                return prod;
+                return pr;
             }
         }
         return null;
