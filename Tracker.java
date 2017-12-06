@@ -46,6 +46,8 @@ public class Tracker {
             int idProduct = scanner.nextInt();
             addProduct(new Product(nameProduct, priceProduct, idProduct));
 
+            System.out.println(menuStart + "\nSelect:");
+
         } else if (choise == 1) {
             System.out.println("Вы ввели: " + choise);
             System.out.println("Для этого действия необходимо ввести наименование продукта или его артикул,\n если какой-то из пунктов неизвестен, то пропустите его нажав ENTER...");
@@ -55,8 +57,12 @@ public class Tracker {
             int idProduct = scanner.nextInt();
             removeProduct(new Product(nameProduct, 0, idProduct));
 
+            System.out.println(menuStart + "\nSelect:");
+
         } else if (choise == 2) {
             System.out.println("Вы ввели: " + choise);
+
+            System.out.println(menuStart + "\nSelect:");
         } else if (choise == 3) {
             System.out.println("Вы ввели: " + choise);
             System.out.println("Для этого действия необходимо ввести наименование продукта или его артикул,\n если какой-то из пунктов неизвестен, то пропустите его нажав ENTER...");
@@ -66,9 +72,13 @@ public class Tracker {
             Product prod = findProduct(new Product(nameProduct, 0, idProduct));
             String prodFind = prod.getName();
 
+            System.out.println(menuStart + "\nSelect:");
+
 
         } else if (choise == 4) {
             System.out.println("Вы ввели: " + choise);
+
+            System.out.println(menuStart + "\nSelect:");
         }
 
         return menuStart;
