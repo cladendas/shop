@@ -39,6 +39,16 @@ public class Tracker {
 //переменная для хранения ключа EXIT - выход из программы
     private static final int EXIT = 5;
 
+//переменные для хранения текстовых сообщений для пользователя
+    String mustWrite = "Необходимо указать цифру, соответствующую выбранному полю меню...";
+    String select = "\nSelect:";
+    String youWrite = "Вы ввели: ";
+    String forThisShouldNamePriceId = "Для этого действия необходимо ввести наименование продукта, его цену и артикул...";
+    String writeName = " , введи наименование...";
+    String writePrice = " , введи цену...";
+    String writeId = " , введи артикул...";
+    String forThisShouldNameIdOrNull = "Для этого действия необходимо ввести наименование продукта или его артикул,\n если какой-то из пунктов неизвестен, то пропустите его нажав ENTER...";
+
 
     public String menuChoise(int choise) {
 
@@ -46,53 +56,53 @@ public class Tracker {
         String name = new UserUI().name;
 
         if(choise > 4 || choise < 0) {
-            System.out.println("Необходимо указать цифру, соответствующую выбранному полю меню...");
-            System.out.println(menuStart + "\nSelect:");
+            System.out.println(mustWrite);
+            System.out.println(menuStart + select);
         } else if (choise == ADD) {
-            System.out.println("Вы ввели: " + choise);
-            System.out.println("Для этого действия необходимо ввести наименование продукта, его цену и артикул...");
-            System.out.println(name + " , введи наименование...");
+            System.out.println(youWrite + choise);
+            System.out.println(forThisShouldNamePriceId);
+            System.out.println(name + writeName);
             String nameProduct = scanner.nextLine();
-            System.out.println(name + " , введи цену...");
+            System.out.println(name + writePrice);
             int priceProduct = scanner.nextInt();
-            System.out.println(name + " , введи артикул...");
+            System.out.println(name + writeId);
             int idProduct = scanner.nextInt();
             addProduct(new Product(nameProduct, priceProduct, idProduct));
 
-            System.out.println(menuStart + "\nSelect:");
+            System.out.println(menuStart + select);
 
         } else if (choise == REMOVE) {
-            System.out.println("Вы ввели: " + choise);
-            System.out.println("Для этого действия необходимо ввести наименование продукта или его артикул,\n если какой-то из пунктов неизвестен, то пропустите его нажав ENTER...");
-            System.out.println(name + " , введи наименование...");
+            System.out.println(youWrite + choise);
+            System.out.println(forThisShouldNameIdOrNull);
+            System.out.println(name + writeName);
             String nameProduct = scanner.nextLine();
-            System.out.println(name + " , а теперь введи артикул...");
+            System.out.println(name + writeId);
             int idProduct = scanner.nextInt();
             removeProduct(new Product(nameProduct, 0, idProduct));
 
-            System.out.println(menuStart + "\nSelect:");
+            System.out.println(menuStart + select);
 
         } else if (choise == CHANGE) {
-            System.out.println("Вы ввели: " + choise);
+            System.out.println(youWrite + choise);
 
-            System.out.println(menuStart + "\nSelect:");
+            System.out.println(menuStart + select);
         } else if (choise == FIND) {
-            System.out.println("Вы ввели: " + choise);
-            System.out.println("Для этого действия необходимо ввести наименование продукта или его артикул,\n если какой-то из пунктов неизвестен, то пропустите его нажав ENTER...");
+            System.out.println(youWrite + choise);
+            System.out.println(forThisShouldNameIdOrNull);
             String nameProduct = scanner.nextLine();
-            System.out.println(name + " , а теперь введи артикул...");
+            System.out.println(name + writeId);
             int idProduct = scanner.nextInt();
             Product prod = findProduct(new Product(nameProduct, 0, idProduct));
             String prodFind = prod.getName();
 
-            System.out.println(menuStart + "\nSelect:");
+            System.out.println(menuStart + select);
 
 
         } else if (choise == SHOWALL) {
             showAllProduct();
 
         } else if (choise == EXIT) {
-            System.out.println("Вы ввели: " + choise);
+            System.out.println(youWrite + choise);
 
         }
 
