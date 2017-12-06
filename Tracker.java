@@ -23,8 +23,15 @@ public class Tracker {
         return this.idCount;
     }
 
-    // ссылка на класс Scaner для возможности ввода пользоателем данных
+    // ссылка на класс Scanner для возможности ввода пользоателем данных
     Scanner scanner = new Scanner(System.in);
+
+    private static final int ADD = 0;
+    private static final int REMOVE = 1;
+    private static final int CHANGE = 2;
+    private static final int FIND = 3;
+    private static final int SHOWALL = 4;
+    private static final int EXIT = 5;
 
 
     public String menuChoise(int choise) {
@@ -35,7 +42,7 @@ public class Tracker {
         if(choise > 4 || choise < 0) {
             System.out.println("Необходимо указать цифру, соответствующую выбранному полю меню...");
             System.out.println(menuStart + "\nSelect:");
-        } else if (choise == 0) {
+        } else if (choise == ADD) {
             System.out.println("Вы ввели: " + choise);
             System.out.println("Для этого действия необходимо ввести наименование продукта, его цену и артикул...");
             System.out.println(name + " , введи наименование...");
@@ -48,7 +55,7 @@ public class Tracker {
 
             System.out.println(menuStart + "\nSelect:");
 
-        } else if (choise == 1) {
+        } else if (choise == REMOVE) {
             System.out.println("Вы ввели: " + choise);
             System.out.println("Для этого действия необходимо ввести наименование продукта или его артикул,\n если какой-то из пунктов неизвестен, то пропустите его нажав ENTER...");
             System.out.println(name + " , введи наименование...");
@@ -59,11 +66,11 @@ public class Tracker {
 
             System.out.println(menuStart + "\nSelect:");
 
-        } else if (choise == 2) {
+        } else if (choise == CHANGE) {
             System.out.println("Вы ввели: " + choise);
 
             System.out.println(menuStart + "\nSelect:");
-        } else if (choise == 3) {
+        } else if (choise == FIND) {
             System.out.println("Вы ввели: " + choise);
             System.out.println("Для этого действия необходимо ввести наименование продукта или его артикул,\n если какой-то из пунктов неизвестен, то пропустите его нажав ENTER...");
             String nameProduct = scanner.nextLine();
@@ -75,10 +82,12 @@ public class Tracker {
             System.out.println(menuStart + "\nSelect:");
 
 
-        } else if (choise == 4) {
+        } else if (choise == SHOWALL) {
+            showAllProduct();
+
+        } else if (choise == EXIT) {
             System.out.println("Вы ввели: " + choise);
 
-            System.out.println(menuStart + "\nSelect:");
         }
 
         return menuStart;
@@ -130,5 +139,11 @@ public class Tracker {
             }
         }
         return null;
+    }
+// метод для вывода в консоль всех продуктов
+    public void showAllProduct() {
+        for(Product prod : products) {
+            System.out.println(prod);
+        }
     }
 }
