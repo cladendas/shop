@@ -26,11 +26,17 @@ public class Tracker {
     // ссылка на класс Scanner для возможности ввода пользоателем данных
     Scanner scanner = new Scanner(System.in);
 
+//переменная для хранения ключа меню ADD - добавление продукта
     private static final int ADD = 0;
+//переменная для хранения ключа меню REMOVE - удаление продукта
     private static final int REMOVE = 1;
+//переменная для хранения ключа CHANGE - изменение продукта
     private static final int CHANGE = 2;
+//переменная для хранения ключа FIND - поиск продукта
     private static final int FIND = 3;
+//переменная для хранения ключа SHOWALL - вывод всех продуктов в консоль
     private static final int SHOWALL = 4;
+//переменная для хранения ключа EXIT - выход из программы
     private static final int EXIT = 5;
 
 
