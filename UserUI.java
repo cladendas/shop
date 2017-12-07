@@ -22,11 +22,15 @@ public class UserUI {
 
     String name;
 
+
+
     public static void main(String[] args) {
 
         new UserUI().init();
 
     }
+
+
 
     public void init() {
 // вывод в консоль первого сообщения-указания для определения имени пользователя

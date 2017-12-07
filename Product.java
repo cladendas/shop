@@ -36,4 +36,31 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Product prod = (Product) obj;
+        if (name != prod.getName())
+            return false;
+        if (id != prod.getId())
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + name.hashCode();
+        result = prime * result + id;
+        return result;
+    }
 }
