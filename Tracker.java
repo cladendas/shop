@@ -55,9 +55,9 @@ public class Tracker {
         String menuStart = new UserUI().menuStart;
         String name = new UserUI().name;
 
-        if(choise > 4 || choise < 0) {
+        if(choise > 5 || choise < 0) {
             System.out.println(mustWrite);
-            System.out.println(menuStart + select);
+            new UserUI().init();
         } else if (choise == ADD) {
             System.out.println(youWrite + choise);
             System.out.println(forThisShouldNamePriceId);
@@ -69,7 +69,7 @@ public class Tracker {
             int idProduct = scanner.nextInt();
             addProduct(new Product(nameProduct, priceProduct, idProduct));
 
-            System.out.println(menuStart + select);
+            new UserUI().init();
 
         } else if (choise == REMOVE) {
             System.out.println(youWrite + choise);
@@ -80,7 +80,7 @@ public class Tracker {
             int idProduct = scanner.nextInt();
             removeProduct(new Product(nameProduct, 0, idProduct));
 
-            System.out.println(menuStart + select);
+            new UserUI().init();
 
         } else if (choise == CHANGE) {
             System.out.println(youWrite + choise);
@@ -95,7 +95,7 @@ public class Tracker {
             Product prod = findProduct(new Product(nameProduct, 0, idProduct));
             String prodFind = prod.getName();
 
-            System.out.println(menuStart + select);
+            new UserUI().init();
 
 
         } else if (choise == SHOWALL) {

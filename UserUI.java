@@ -16,9 +16,10 @@ public class UserUI {
     String menuSection1 = ". Remove\n";
     String menuSection2 = ". Change\n";
     String menuSection3 = ". Find\n";
-    String menuSection4 = ". Exit\n";
+    String menuSection4 = ". Show all\n";
+    String menuSection5 = ". Exit\n";
 // переменная для хранения всех пунктов меню в сборе и с указанием номера каждого пункта
-    String menuStart = 0 + menuSection0 + 1 + menuSection1 + 2 + menuSection2 + 3 + menuSection3 + 4 + menuSection4;
+    String menuStart = 0 + menuSection0 + 1 + menuSection1 + 2 + menuSection2 + 3 + menuSection3 + 4 + menuSection4 + 5 + menuSection5;
 
     String name;
 
@@ -26,18 +27,23 @@ public class UserUI {
 
     public static void main(String[] args) {
 
-        new UserUI().init();
+        new UserUI().welcome();
 
     }
 
 
 
-    public void init() {
+    public void welcome() {
 // вывод в консоль первого сообщения-указания для определения имени пользователя
         String hello = "Представься...";
         System.out.println(hello);
 // считываение введеных данных и занесение их в переменную name, по которой к пользователю будут обращаться, как по имени
-        this.name = scanner.nextLine();
+        name = scanner.nextLine();
+
+        init();
+    }
+
+    public void init() {
 // вывод в консоль второго сообщения-указания для выбора дальнейших действий
         String whatDo = ", что сделать?";
         System.out.println(name + whatDo);
