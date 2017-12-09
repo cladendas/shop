@@ -41,15 +41,12 @@ public class Tracker {
     // сравниваем каждый элемент массива с аргументов метода
     // если в массиве Product найден искомый prod, то найденной ячейке массива присваиваем null
     // если совпадений нет, то возвращаем полученный аргумент
-    public Product removeProduct(Product prod) {
+    public void removeProduct(Product prod) {
         for (Product pr : products) {
-            if (pr.equals(prod)) {
+            if (prod.equals(pr)) {
                 pr = null;
-            } else {
-                return prod;
             }
         }
-        return prod;
     }
     // метод для поиска продукта в массиве Product
     // принимает продукт необходимый к поиску

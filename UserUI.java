@@ -46,7 +46,7 @@ public class UserUI {
 
 
 
-    String name;
+    static String name;
 
 
 
@@ -119,6 +119,7 @@ public class UserUI {
             System.out.println(name + writeId);
             int idProduct = scanner.nextInt();
             tracker.removeProduct(new Product(nameProduct, 0, idProduct));
+            System.out.println("позиция с наименованием \"" + nameProduct + "\"удалена");
 
             new UserUI().init();
 
