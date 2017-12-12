@@ -50,7 +50,7 @@ public class Product {
         if (getClass() != obj.getClass())
             return false;
         Product prod = (Product) obj;
-        if (getName() != prod.getName())
+        if (! getName().equals(prod.getName()))
             return false;
         if (getId() != prod.getId())
             return false;
