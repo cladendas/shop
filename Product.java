@@ -45,12 +45,14 @@ public class Product {
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null || getClass() != obj.getClass())
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
             return false;
         Product prod = (Product) obj;
-        if (name != prod.getName())
+        if (getName() != prod.getName())
             return false;
-        if (id != prod.getId())
+        if (getId() != prod.getId())
             return false;
         return true;
     }
