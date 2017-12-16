@@ -56,12 +56,7 @@ public class UserUI {
 
     public static void main(String[] args) {
 
-        //new UserUI().welcome();
-
-        Tracker tr = new Tracker();
-        tr.addProduct(new Product("пример",1, 111));
-
-        new Tracker().changeProduct("пример", 111);
+        new UserUI().welcome();
 
     }
 
