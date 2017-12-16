@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Tracker {
     // массив products типа Product хранит прожукты (5 штук)
     Product[] products = new Product[5];
+
     // переменная idCount необходима для генерации id
     private int idCount = 0;
     // переменная index необходима для занесения продуктов в массив products поочередно в каждую ячейку
@@ -40,11 +41,15 @@ public class Tracker {
     // принимает продукт необходимый к удалению
     // сравниваем каждый элемент массива с аргументов метода
     // если в массиве Product найден искомый prod, то найденной ячейке массива присваиваем null
-    // если совпадений нет, то возвращаем полученный аргумент
-    public void removeProduct(Product prod) {
-        for (Product pr : products) {
-            if (prod.equals(pr)) {
-                pr = null;
+    // если совпадений нет, то возвращаем сообщение об отсутствии совпадений
+    public void removeProduct(String nameProduct, int id) {
+        Product prod = new Product (nameProduct, 0, id);
+
+        for (int i = 0; i < products.length; i++) {
+            if (products[i] != null && prod.equals(products[i])) {
+                products[i] = null;
+            } else {
+                System.out.println("совпадений не найдено");
             }
         }
     }
@@ -52,34 +57,101 @@ public class Tracker {
     // принимает продукт необходимый к поиску
     // если в массиве Product найден искомый prod, то возвращаем продукт из массива
     // если не найден, то возвращаем null
-    public Product findProduct(Product prod) {
-        for (Product pr : products) {
-            if (pr.equals(prod)) {
-                return pr;
+    public void findProduct(String nameProduct, int id) {
+        Product prod = new Product (nameProduct, 0, id);
+        for (int i = 0; i < products.length; i++) {
+            if (prod.equals(products[i])) {
+                System.out.println(products[i].getName() + " " + products[i].getPrice() + " " + products[i].getName());
+            } else {
+                System.out.println("совпадений не найдено");
             }
         }
-        return null;
     }
 
     // метод для изменения продукта в массиве Product
     // принимает продукт необходимый к изменению
     // если в массиве Product найден искомый prod, то заменяем найденный продукт на prod
     // если не найден, то возвращаем null
-    public Product changeProduct (Product prod) {
-        for (Product pr : products) {
-            if (pr.equals(prod)) {
-                pr = prod;
-                return pr;
+    public void changeProduct (String nameProduct, int id) {
+        Product prod = new Product (nameProduct, 0, id);
+
+        final String menuChangeSectionNAME = ". Наименование\n";
+        final String menuChangeSectionPRICE = ". Цена\n";
+        final String menuChangeSectionID = ". Артикул\n";
+        final String menuChangeSectionCANCEL = ". Отмена\n";
+
+        final int nameChange = 0;
+        final int priceChange = 1;
+        final int idChange = 2;
+        final int cancelChange = 3;
+
+        int findChangeProdIndex = 0;
+
+        String menuChangeStart = nameChange + menuChangeSectionNAME + priceChange + menuChangeSectionPRICE +
+                idChange + menuChangeSectionID + cancelChange + menuChangeSectionCANCEL;
+
+
+        for (int i = 0; i < products.length; i++) {
+            if (products[i] != null && prod.equals(products[i])) {
+                findChangeProdIndex = i;
+                System.out.println("продукт для изменения найден");
+                System.out.println(products[i].getName() + " " + products[i].getPrice() + " " + products[i].getId());
             }
         }
-        return null;
+
+
+
+        Scanner scanner = new Scanner(System.in);
+
+        while(true) {
+            System.out.println("Что изменить в найденом продукте...");
+            System.out.println(menuChangeStart);
+
+            int choiseChange = scanner.nextInt();
+
+            if (choiseChange > 3 || choiseChange < 0) {
+                System.out.println("Необходимо указать цифру, соответствующую выбранному полю меню...");
+                continue;
+            } else if (choiseChange == nameChange) {
+                System.out.println("Введи новое имя...");
+
+                scanner.nextLine();  // для отчистки буфера от \n
+
+                String choiseNewName = scanner.nextLine();
+
+                products[findChangeProdIndex].setName(choiseNewName);
+                continue;
+
+            } else if (choiseChange == priceChange) {
+                System.out.println("Введи новую цену...");
+
+                int choiseNewPrice = scanner.nextInt();
+
+                products[findChangeProdIndex].setPrice(choiseNewPrice);
+                continue;
+            } else if (choiseChange == idChange) {
+                System.out.println("Введи новый артикул...");
+
+                int choiseNewId = scanner.nextInt();
+
+                products[findChangeProdIndex].setId(choiseNewId);
+                continue;
+            } else if (choiseChange == cancelChange) {
+                break;
+            }
+
+        }
+
     }
 // метод для вывода в консоль всех продуктов
     public void showAllProduct() {
         for(Product prod : products) {
-            if (null != prod) {
+            if (prod != null) {
                 System.out.println(prod.getName() + " " + prod.getPrice()+ " " + prod.getId());
+            } else {
+                System.out.println("ячейка пуста");
             }
         }
     }
+
 }

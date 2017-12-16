@@ -12,14 +12,12 @@ public class UserUI {
    Scanner scanner = new Scanner(System.in);
 
 // переменные для хранения пунктов меню
-    String menuSection0 = ". Add\n";
-    String menuSection1 = ". Remove\n";
-    String menuSection2 = ". Change\n";
-    String menuSection3 = ". Find\n";
-    String menuSection4 = ". Show all\n";
-    String menuSection5 = ". Exit\n";
-// переменная для хранения всех пунктов меню в сборе и с указанием номера каждого пункта
-    String menuStart = 0 + menuSection0 + 1 + menuSection1 + 2 + menuSection2 + 3 + menuSection3 + 4 + menuSection4 + 5 + menuSection5;
+    String menuSectionADD = ". Add\n";
+    String menuSectionREMOVE = ". Remove\n";
+    String menuSectionCHANGE = ". Change\n";
+    String menuSectionFIND = ". Find\n";
+    String menuSectionSHOWALL = ". Show all\n";
+    String menuSectionEXIT = ". Exit\n";
 
     //переменная для хранения ключа меню ADD - добавление продукта
     private static final int ADD = 0;
@@ -34,6 +32,10 @@ public class UserUI {
     //переменная для хранения ключа EXIT - выход из программы
     private static final int EXIT = 5;
 
+    // переменная для хранения всех пунктов меню в сборе и с указанием номера каждого пункта
+    String menuStart = ADD + menuSectionADD + REMOVE + menuSectionREMOVE + CHANGE + menuSectionCHANGE + FIND + menuSectionFIND +
+            SHOWALL + menuSectionSHOWALL + EXIT + menuSectionEXIT;
+
     //переменные для хранения текстовых сообщений для пользователя
     String mustWrite = "Необходимо указать цифру, соответствующую выбранному полю меню...";
     String select = "\nSelect:";
@@ -42,7 +44,8 @@ public class UserUI {
     String writeName = " , введи наименование...";
     String writePrice = " , введи цену...";
     String writeId = " , введи артикул...";
-    String forThisShouldNameIdOrNull = "Для этого действия необходимо ввести наименование продукта или его артикул,\n если какой-то из пунктов неизвестен, то пропустите его нажав ENTER...";
+    String forThisShouldNameId = "Для этого действия необходимо ввести наименование продукта и его артикул...";
+    String forChangeShouldNameId = "Для этого действия необходимо ввести наименование и артикул продукта, данные которого хотите изменить...";
 
 
 
@@ -53,7 +56,12 @@ public class UserUI {
 
     public static void main(String[] args) {
 
-        new UserUI().welcome();
+        //new UserUI().welcome();
+
+        Tracker tr = new Tracker();
+        tr.addProduct(new Product("пример",1, 111));
+
+        new Tracker().changeProduct("пример", 111);
 
     }
 
@@ -106,36 +114,48 @@ public class UserUI {
             System.out.println(name + writeId);
 
                 int idProduct = scanner.nextInt();
-            Product pr = new Product(nameProduct, priceProduct, idProduct);
-            tracker.addProduct(pr);
+
+            tracker.addProduct(new Product(nameProduct, priceProduct, idProduct));
 
             init();
 
         } else if (choise == REMOVE) {
             System.out.println(youWrite + choise);
-            System.out.println(forThisShouldNameIdOrNull);
+            System.out.println(forThisShouldNameId);
             System.out.println(name + writeName);
             String nameProduct = scanner.nextLine();
             System.out.println(name + writeId);
             int idProduct = scanner.nextInt();
-            tracker.removeProduct(new Product(nameProduct, 0, idProduct));
-            System.out.println("позиция с наименованием \"" + nameProduct + "\"удалена");
 
-            new UserUI().init();
+            tracker.removeProduct(nameProduct ,idProduct);
+
+
+           // System.out.println("позиция с наименованием \"" + nameProduct + "\" удалена");
+
+
+
+            init();
 
         } else if (choise == CHANGE) {
             System.out.println(youWrite + choise);
-
-            new UserUI().init();
-
-        } else if (choise == FIND) {
-            System.out.println(youWrite + choise);
-            System.out.println(forThisShouldNameIdOrNull);
+            System.out.println(forChangeShouldNameId);
+            System.out.println(name + writeName);
             String nameProduct = scanner.nextLine();
             System.out.println(name + writeId);
             int idProduct = scanner.nextInt();
-            Product prod = tracker.findProduct(new Product(nameProduct, 0, idProduct));
-            String prodFind = prod.getName();
+
+            tracker.changeProduct(nameProduct ,idProduct);
+
+            init();
+
+        } else if (choise == FIND) {
+            System.out.println(youWrite + choise);
+            System.out.println(forThisShouldNameId);
+            System.out.println(name + writeName);
+            String nameProduct = scanner.nextLine();
+            System.out.println(name + writeId);
+            int idProduct = scanner.nextInt();
+            tracker.findProduct(nameProduct, idProduct);
 
             init();
 
