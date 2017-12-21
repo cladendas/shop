@@ -107,36 +107,36 @@ public class Tracker {
             System.out.println("Что изменить в найденом продукте...");
             System.out.println(menuChangeStart);
 
-            int choiseChange = scanner.nextInt();
+            int choiceChange = scanner.nextInt();
 
-            if (choiseChange > 3 || choiseChange < 0) {
+            if (choiceChange > 3 || choiceChange < 0) {
                 System.out.println("Необходимо указать цифру, соответствующую выбранному полю меню...");
                 continue;
-            } else if (choiseChange == nameChange) {
+            } else if (choiceChange == nameChange) {
                 System.out.println("Введи новое имя...");
 
                 scanner.nextLine();  // для отчистки буфера от \n
 
-                String choiseNewName = scanner.nextLine();
+                String choiceNewName = scanner.nextLine();
 
-                products[findChangeProdIndex].setName(choiseNewName);
+                products[findChangeProdIndex].setName(choiceNewName);
                 continue;
 
-            } else if (choiseChange == priceChange) {
+            } else if (choiceChange == priceChange) {
                 System.out.println("Введи новую цену...");
 
-                int choiseNewPrice = scanner.nextInt();
+                int choiceNewPrice = scanner.nextInt();
 
-                products[findChangeProdIndex].setPrice(choiseNewPrice);
+                products[findChangeProdIndex].setPrice(choiceNewPrice);
                 continue;
-            } else if (choiseChange == idChange) {
+            } else if (choiceChange == idChange) {
                 System.out.println("Введи новый артикул...");
 
-                int choiseNewId = scanner.nextInt();
+                int choiceNewId = scanner.nextInt();
 
-                products[findChangeProdIndex].setId(choiseNewId);
+                products[findChangeProdIndex].setId(choiceNewId);
                 continue;
-            } else if (choiseChange == cancelChange) {
+            } else if (choiceChange == cancelChange) {
                 break;
             }
 
