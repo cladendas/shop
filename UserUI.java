@@ -13,8 +13,7 @@ public class UserUI {
 
     // ссылка на класс Scaner для возможности ввода пользоателем данных
     Scanner scanner = new Scanner(System.in);
-
-
+    
     // переменные для хранения пунктов меню
     String menuSectionADD = ". Add\n";
     String menuSectionREMOVE = ". Remove\n";
