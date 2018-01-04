@@ -120,23 +120,7 @@ public class UserUI {
             System.out.println(youWrite + choice);
             // вывод сообщения о необходимости ввести имя продукта, цену продукта и артикул продукта
             System.out.println(forThisShouldNamePriceId);
-            // сообщение-указание на ввод имени продукта
-            System.out.println(name + writeName);
-            // переменная для хранения ввденого пользователем имени продукта
-            String nameProduct = scanner.nextLine();
-            // сообщение-указание на ввод цены продукта
-            System.out.println(name + writePrice);
-            // переменная для хранения ввденой пользователем цены продукта
-            int priceProduct = scanner.nextInt();
-            // сообщение-указание на ввод артикула продукта
-            System.out.println(name + writeId);
-            // переменная для хранения введеного пользователем артикула продукта
-            int idProduct = scanner.nextInt();
-
-            // передача введеных пользователем данных для обработки с введенной командой
-            tracker.addProduct(new Product(nameProduct, priceProduct, idProduct));
-
-            // возврат к меню
+            tracker.addProduct(new Product(writeNameProduct(), writePriceProduct(), writeIdProduct()));
             init();
 
             // введеная команда соответствует пункту меню REMOVE
@@ -146,17 +130,8 @@ public class UserUI {
             System.out.println(youWrite + choice);
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
             System.out.println(forThisShouldNameId);
-            // сообщение-указание на ввод имени продукта
-            System.out.println(name + writeName);
-            // переменная для хранения ввденого пользователем имени продукта
-            String nameProduct = scanner.nextLine();
-            // сообщение-указание на ввод артикула продукта
-            System.out.println(name + writeId);
-            // переменная для хранения введеного пользователем артикула продукта
-            int idProduct = scanner.nextInt();
-
             // передача введеных пользователем данных для обработки с введенной командой
-            tracker.removeProduct(nameProduct ,idProduct);
+            tracker.removeProduct(writeNameProduct() ,writeIdProduct());
 
             // возврат к меню
             init();
@@ -166,13 +141,9 @@ public class UserUI {
             
             System.out.println(youWrite + choice);
             System.out.println(forChangeShouldNameId);
-            System.out.println(name + writeName);
-            String nameProduct = scanner.nextLine();
-            System.out.println(name + writeId);
-            int idProduct = scanner.nextInt();
 
             // передача введеных пользователем данных для обработки с введенной командой
-            tracker.changeProduct(nameProduct ,idProduct);
+            tracker.changeProduct(writeNameProduct() ,writeIdProduct());
 
             // возврат к меню
             init();
@@ -183,17 +154,8 @@ public class UserUI {
             System.out.println(youWrite + choice);
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
             System.out.println(forThisShouldNameId);
-            // сообщение-указание на ввод имени продукта
-            System.out.println(name + writeName);
-            // переменная для хранения ввденого пользователем имени продукта
-            String nameProduct = scanner.nextLine();
-            // сообщение-указание на ввод артикула продукта
-            System.out.println(name + writeId);
-            // переменная для хранения введеного пользователем артикула продукта
-            int idProduct = scanner.nextInt();
-            
             // передача введеных пользователем данных для обработки с введенной командой
-            tracker.findProduct(nameProduct, idProduct);
+            tracker.findProduct(writeNameProduct(), writeIdProduct());
 
             // возврат к меню
             init();
@@ -207,6 +169,40 @@ public class UserUI {
         } else if (choice == EXIT) {
             // вывод сообщения и введенной пользователем команды
             System.out.println(youWrite + choice);
+        }
+    }
+
+    private String writeNameProduct() {
+        System.out.println(name + writeName);
+        String nameProduct = scanner.nextLine();
+        return nameProduct;
+    }
+
+    private int writePriceProduct() {
+        while(true) {
+            try {
+                System.out.println(name + writePrice);
+                int priceProduct = scanner.nextInt();
+                return priceProduct;
+            } catch (InputMismatchException e) {
+                System.out.println("НЕОБХОДИМО ВВЕСТИ ИМЕННО ЦИФРУ");
+                scanner.nextLine();  // для отчистки буфера от \n
+                continue;
+            }
+        }
+    }
+
+    private int writeIdProduct() {
+        while(true) {
+            try {
+                System.out.println(name + writeId);
+                int idProduct = scanner.nextInt();
+                return idProduct;
+            } catch (InputMismatchException e) {
+                System.out.println("НЕОБХОДИМО ВВЕСТИ ИМЕННО ЦИФРУ");
+                scanner.nextLine();  // для отчистки буфера от \n
+                continue;
+            }
         }
     }
 }
