@@ -95,8 +95,7 @@ public class UserUI {
                 break;
             }
             catch (InputMismatchException e) {  // ловля исключения и вывод в консоль сообщения-указания
-                System.out.println("ВВЕДИ ЧИСЛО");
-                scanner.nextLine();  // для отчистки буфера от \n
+                exceptionMessage();
             }
         }
     }
@@ -172,7 +171,6 @@ public class UserUI {
         }
     }
 
-
     private void youWriteChoice(int choice) {
 
         System.out.println(youWrite + choice);
@@ -192,9 +190,7 @@ public class UserUI {
                 int priceProduct = scanner.nextInt();
                 return priceProduct;
             } catch (InputMismatchException e) {
-                System.out.println("НЕОБХОДИМО ВВЕСТИ ИМЕННО ЦИФРУ");
-                scanner.nextLine();  // для отчистки буфера от \n
-                continue;
+                exceptionMessage();
             }
         }
     }
@@ -206,10 +202,13 @@ public class UserUI {
                 int idProduct = scanner.nextInt();
                 return idProduct;
             } catch (InputMismatchException e) {
-                System.out.println("НЕОБХОДИМО ВВЕСТИ ИМЕННО ЦИФРУ");
-                scanner.nextLine();  // для отчистки буфера от \n
-                continue;
+                exceptionMessage();
             }
         }
+    }
+
+    private void exceptionMessage() {
+        System.out.println("НЕОБХОДИМО ВВЕСТИ ИМЕННО ЦИФРУ");
+        scanner.nextLine();  // для отчистки буфера от \n
     }
 }
