@@ -115,9 +115,9 @@ public class UserUI {
             
             // введеная команда соответствует пункту меню ADD
         } else if (choice == ADD) {
-            
-            // вывод сообщения и введенной пользователем команды
-            System.out.println(youWrite + choice);
+
+            youWriteChoice(choice);
+
             // вывод сообщения о необходимости ввести имя продукта, цену продукта и артикул продукта
             System.out.println(forThisShouldNamePriceId);
             tracker.addProduct(new Product(writeNameProduct(), writePriceProduct(), writeIdProduct()));
@@ -125,9 +125,9 @@ public class UserUI {
 
             // введеная команда соответствует пункту меню REMOVE
         } else if (choice == REMOVE) {
-            
-            // вывод сообщения и введенной пользователем команды
-            System.out.println(youWrite + choice);
+
+            youWriteChoice(choice);
+
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
             System.out.println(forThisShouldNameId);
             // передача введеных пользователем данных для обработки с введенной командой
@@ -138,8 +138,9 @@ public class UserUI {
 
             // введеная команда соответствует пункту меню CHANGE
         } else if (choice == CHANGE) {
-            
-            System.out.println(youWrite + choice);
+
+            youWriteChoice(choice);
+
             System.out.println(forChangeShouldNameId);
 
             // передача введеных пользователем данных для обработки с введенной командой
@@ -150,8 +151,7 @@ public class UserUI {
 
             // введеная команда соответствует пункту меню FIND
         } else if (choice == FIND) {
-            // вывод сообщения и введенной пользователем команды
-            System.out.println(youWrite + choice);
+            youWriteChoice(choice);
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
             System.out.println(forThisShouldNameId);
             // передача введеных пользователем данных для обработки с введенной командой
@@ -162,14 +162,21 @@ public class UserUI {
 
             // введеная команда соответствует пункту меню SHOWALL
         } else if (choice == SHOWALL) {
+            youWriteChoice(choice);
             tracker.showAllProduct();
             init();
 
             // введеная команда соответствует пункту меню EXIT
         } else if (choice == EXIT) {
-            // вывод сообщения и введенной пользователем команды
-            System.out.println(youWrite + choice);
+            youWriteChoice(choice);
         }
+    }
+
+
+    private void youWriteChoice(int choice) {
+
+        System.out.println(youWrite + choice);
+
     }
 
     private String writeNameProduct() {
