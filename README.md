@@ -44,3 +44,21 @@
     														<maven.compiler.target>1.6</maven.compiler.target>
     													И изменив название пакета с 1 на first
     При выполнении команды java -cp ./target/classes first.App все заработало.
+
+07.01.18
+	Создал проект maven в IDEA, нажав правой кнопкой мыши на имя проекта, потом выбрав New/Module/Maven.
+	В корневом pom.xml добавил следующий тег:
+												<dependencies>
+											        <dependency>
+											            <groupId>junit</groupId>
+											            <artifactId>junit</artifactId>
+											            <version>4.12</version>
+											            <scope>test</scope>
+											        </dependency>
+											    </dependencies>
+	Автоматически создали директории проекета maven. Меня интересовала директория test. В ней создал тестирующие классы с именами оригиналов + Test.
+	Импортировал следующие библиотеки:
+										import org.junit.Test;
+										import static org.hamcrest.core.Is.is;
+										import static org.junit.Assert.assertThat;
+
