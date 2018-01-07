@@ -32,3 +32,15 @@
 	У класса Scanner есть метод .hasNextInt(), который вернет true, если с потока ввода можно считать целое число.
 	Если после метода .nextInt() использовать метод .nextLine(), то метод .nextLine() считает последнее нажатие клавиши ENTER, как символ \n (перехода а новую строку). Поэтому после метода .nextInt() использовать метод .nextLine(), который считает нажатие клавиши ENTER и освободит буфер, а потом уже использовать метод .nextLine(), как задумывалось изначально.
 	Метод .hasNextInt() можно использовать вместо использования исключений при проверке введеных пользователем данных.
+
+07.01.18
+	Maven установил через Homebrew(https://brew.sh/index_ru.html), введя в терминал комнду /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)". Потом руководствовался следующим http://www.apache-maven.ru/quick_start.html.
+	При выполнении команды mvn compile выходила ошибка:
+														Compilation failure: Compilation failure: 
+														[ERROR] Source option 1.5 is no longer supported. Use 1.6 or later.
+														[ERROR] Target option 1.5 is no longer supported. Use 1.6 or later.
+														Эту проблему решил, добавив в pom.xml в теге <properties> следующие строки:
+															<maven.compiler.source>1.6</maven.compiler.source>
+    														<maven.compiler.target>1.6</maven.compiler.target>
+    													И изменив название пакета с 1 на first
+    При выполнении команды java -cp ./target/classes first.App все заработало.
