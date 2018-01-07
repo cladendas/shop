@@ -1,4 +1,4 @@
-package shop;
+package ru;
 
 // класс Product
 // описывает объект продукт

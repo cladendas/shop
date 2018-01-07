@@ -1,4 +1,4 @@
-package shop;
+package ru;
 
 // класс для считывания введных данных с консоли
 import java.util.InputMismatchException;

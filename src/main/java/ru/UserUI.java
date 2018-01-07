@@ -1,4 +1,4 @@
-package shop;
+package ru;
 
 // класс для обработки исключения, отвечающего за несоответствие введеного типа
 import java.util.InputMismatchException;
