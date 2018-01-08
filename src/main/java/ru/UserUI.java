@@ -154,7 +154,11 @@ public class UserUI {
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
             System.out.println(forThisShouldNameId);
             // передача введеных пользователем данных для обработки с введенной командой
-            tracker.findProduct(writeNameProduct(), writeIdProduct());
+            if(tracker.findProduct(writeNameProduct(), writeIdProduct())) {
+                System.out.println("такой продукт имеется в списке");
+            } else {
+                System.out.println("в списке такой проукт отсутствует");
+            }
 
             // возврат к меню
             init();

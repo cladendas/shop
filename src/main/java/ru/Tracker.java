@@ -51,19 +51,18 @@ public class Tracker {
     // сравниваем каждый элемент массива с созданным инстансом
     // если в массиве products найден искомый prod, то выводим имя продукта, его цену, артикул
     // если не найден, то ввыводим сообщение об отсутствии совпадений
-    public void findProduct(String nameProduct, int id) {
+    public boolean findProduct(String nameProduct, int id) {
 
         // инстанс, в его конструктор передаются входящие параметры метода с 0 ценой
         Product prod = new Product (nameProduct, 0, id);
 
         // цикл для сравнения элементов массива products с созданным инстансом
         for (int i = 0; i < products.length; i++) {
-            if (prod.equals(products[i])) {
-                System.out.println(products[i].getName() + " " + products[i].getPrice() + " " + products[i].getId());
-            } else {
-                System.out.println("совпадений не найдено");
-            }
+            if (prod.equals(products[i]))
+                //System.out.println(products[i].getName() + " " + products[i].getPrice() + " " + products[i].getId());
+            return true;
         }
+        return false;
     }
 
     // метод для изменения продукта в массиве products
