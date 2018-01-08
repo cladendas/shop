@@ -48,13 +48,24 @@ public class TrackerTest {
         assertThat(resultProductSecond, is(prodNULL));
     }
     @Test
-    public void whenFINDOneProduct() {
+    public void whenFINDProductTRUE() {
         Tracker tracker = new Tracker();
         Product potato = new Product("картошка", 1,2);
         tracker.addProduct(potato);
-        Product resultProduct = tracker.products[0];
+        Boolean resultProduct = tracker.findProduct(potato.getName(), potato.getId());
 
-        assertThat(resultProduct, is(potato));
+        assertThat(resultProduct, is(true));
+    }
+    @Test
+    public void whenFINDProductFALSE() {
+        Tracker tracker = new Tracker();
+        Product potato = new Product("картошка", 1,2);
+        Product apple = new Product("яблоко", 25,444);
+        tracker.addProduct(potato);
+        tracker.addProduct(apple);
+        Boolean resultProduct = tracker.findProduct("броколи", 4);
+
+        assertThat(resultProduct, is(false));
     }
 
 }
