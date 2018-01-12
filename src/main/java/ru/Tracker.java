@@ -1,14 +1,10 @@
 package ru;
 
-// класс для считывания введных данных с консоли
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 // класс Tracker
 // реализует логику работы с Product
 // поиск, удаление, добавление, изменение
 // содержит массив для хранения продуктов
-public class Tracker {
+public class Tracker extends Input{
     // массив products типа Product хранит прожукты (5 штук)
     Product[] products = new Product[5];
 
@@ -82,9 +78,6 @@ public class Tracker {
         // инстанс, в его конструктор передаются входящие параметры метода с 0 ценой
         Product prod = new Product (nameProduct, 0, id);
 
-        // ссылка на класс Scanner для считывания введеных пользователем данных
-        Scanner scanner = new Scanner(System.in);
-
         // переменные для хранения пунктов меню
         final String menuChangeSectionNAME = ". Наименование\n";
         final String menuChangeSectionPRICE = ". Цена\n";
@@ -122,10 +115,6 @@ public class Tracker {
             }
         }
 
-//        if (findProduct(nameProduct,id)) {
-//
-//        }
-
         // цикл для вывода меню
         // после выполнения какого-либо из пунктов меню будет выводиться до тех пор,
         // пока не поступит команда ОТМЕНА
@@ -133,10 +122,8 @@ public class Tracker {
             System.out.println("Что изменить в найденом продукте...");
             System.out.println(menuChangeStart);
 
-            // проверка на возникновение исключения, если пользователь введет не целое положительное число
-            try {
                 // переменная для хранения введенного пользователем пункта меню
-                int choiceChange = scanner.nextInt();
+                int choiceChange = inputInt();
 
                 // проверка, что введеное пользователем число находится в диапазоне чисел, соответствующих пунктам меню
                 if (choiceChange > 3 || choiceChange < 0) {
@@ -147,10 +134,8 @@ public class Tracker {
                     // сообщение-указание на необходимость ввода нового имени
                     System.out.println("Введи новое имя...");
 
-                    scanner.nextLine();  // для отчистки буфера от \n
-
-                        // переменная для хранения введенного пользователем нового имени
-                        String choiceNewName = scanner.nextLine();
+                    // переменная для хранения введенного пользователем нового имени
+                    String choiceNewName = inputString();
 
                     // изменение имени искомого продукта с использованием индекса этого продукта и метода
                     // класса Product для изменения имени продукта на введеное пользователем имя
@@ -164,49 +149,31 @@ public class Tracker {
                     System.out.println("Введи новую цену...");
 
                     // проверка на возникновение исключения, если пользователь введет не целое положительное число
-                    try {
                     // переменная для хранения введенной пользователем новой цены
-                    int choiceNewPrice = scanner.nextInt();
+                    int choiceNewPrice = inputInt();
 
                     // изменение цены искомого продукта с использованием индекса этого продукта и метода
                     // класса Product для изменения цены продукта на введеную пользователем цену
                     // после изменения цены, цикл начинается заново с меню метода для изменения продукта
                     products[findChangeProdIndex].setPrice(choiceNewPrice);
-                    continue;
-                    }
-                    catch (InputMismatchException e) {  // ловля исключения и вывод в консоль сообщения-указания
-                        System.out.println("ВВЕДИ ЧИСЛО");
-                        scanner.nextLine();  // для отчистки буфера от \n
-                    }
+
 
                 } else if (choiceChange == idChange) {
                     // сообщение-указание на необходимость ввода нового артикула
                     System.out.println("Введи новый артикул...");
 
-                    try {
                     // переменная для хранения введенной пользователем новой цены
-                    int choiceNewId = scanner.nextInt();
+                    int choiceNewId = inputInt();
 
                     // изменение артикула искомого продукта с использованием индекса этого продукта и метода
                     // класса Product для изменения артикула продукта на введеный пользователем артикул
                     // после изменения артикула, цикл начинается заново с меню метода для изменения продукта
                     products[findChangeProdIndex].setId(choiceNewId);
-                    continue;
-                    }
-                    catch (InputMismatchException e) {  // ловля исключения и вывод в консоль сообщения-указания
-                        System.out.println("ВВЕДИ ЧИСЛО");
-                        scanner.nextLine();  // для отчистки буфера от \n
-                    }
 
                     // выход из метода изменения продукта
                 } else if (choiceChange == cancelChange) {
                     break;
                 }
-            }
-            catch (InputMismatchException e) {  // ловля исключения и вывод в консоль сообщения-указания
-                System.out.println("ВВЕДИ ЧИСЛО");
-                scanner.nextLine();  // для отчистки буфера от \n
-            }
 
             }
     }
