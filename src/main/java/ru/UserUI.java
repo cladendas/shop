@@ -1,5 +1,6 @@
 package ru;
 
+
 // класс для обработки исключения, отвечающего за несоответствие введеного типа
 import java.util.InputMismatchException;
 // класс для считывания введных данных с консоли
@@ -68,7 +69,7 @@ public class UserUI {
         System.out.println(hello);
 
         // считываение введеных данных и занесение их в переменную name, по которой к пользователю будут обращаться, как по имени
-        name = scanner.nextLine();
+        name = inputString();
 
         // вызов метода, отвечающего за вывод меню
         init();
@@ -89,9 +90,7 @@ public class UserUI {
             // проверка на возникновение исключения, если пользователь введет не целое положительное число
             try {
                 // переменная для хранения введенного пользователем числа, указывающего на его выбор конкретного пункта меню
-                int answerMenuStart = scanner.nextInt(); 
-                scanner.nextLine();  // для отчистки буфера от \n
-                menuChoice(answerMenuStart);  // передача команды пользователя на обработку в метод menuChoice()
+                menuChoice(inputInt());  // передача команды пользователя на обработку в метод menuChoice()
                 break;
             }
             catch (InputMismatchException e) {  // ловля исключения и вывод в консоль сообщения-указания
@@ -184,36 +183,46 @@ public class UserUI {
 
     private String writeNameProduct() {
         System.out.println(name + writeName);
-        String nameProduct = scanner.nextLine();
+        String nameProduct = inputString();
         return nameProduct;
     }
 
     private int writePriceProduct() {
-        while(true) {
-            try {
                 System.out.println(name + writePrice);
-                int priceProduct = scanner.nextInt();
+                int priceProduct = inputInt();
                 return priceProduct;
-            } catch (InputMismatchException e) {
-                exceptionMessage();
-            }
-        }
     }
 
     private int writeIdProduct() {
-        while(true) {
-            try {
                 System.out.println(name + writeId);
-                int idProduct = scanner.nextInt();
+                int idProduct = inputInt();
                 return idProduct;
-            } catch (InputMismatchException e) {
-                exceptionMessage();
-            }
-        }
     }
 
     private void exceptionMessage() {
         System.out.println("НЕОБХОДИМО ВВЕСТИ ИМЕННО ЦИФРУ");
         scanner.nextLine();  // для отчистки буфера от \n
+    }
+
+    private int inputInt() {
+            while(true) {
+                try {
+
+                    int valueInt = scanner.nextInt();
+
+                    scanner.nextLine();  // для отчистки буфера от \n
+
+                    return valueInt;
+                } catch (InputMismatchException e) {
+                    exceptionMessage();
+                }
+            }
+    }
+
+    private String inputString() {
+
+        String valueString = scanner.nextLine();
+
+        return valueString;
     }
 }
