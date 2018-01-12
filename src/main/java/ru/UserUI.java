@@ -1,20 +1,11 @@
 package ru;
 
-
-// класс для обработки исключения, отвечающего за несоответствие введеного типа
-import java.util.InputMismatchException;
-// класс для считывания введных данных с консоли
-import java.util.Scanner;
-
 //класс для взаимодействия с пользователем
-public class UserUI {
+public class UserUI extends Input{
 
     // ссылка на инстанс Tracker
     Tracker tracker = new Tracker();
 
-    // ссылка на класс Scaner для возможности ввода пользоателем данных
-    Scanner scanner = new Scanner(System.in);
-    
     // переменные для хранения пунктов меню
     String menuSectionADD = ". Add\n";
     String menuSectionREMOVE = ". Remove\n";
@@ -190,30 +181,4 @@ public class UserUI {
                 return idProduct;
     }
 
-    private void exceptionMessage() {
-        System.out.println("НЕОБХОДИМО ВВЕСТИ ИМЕННО ЦИФРУ");
-        scanner.nextLine();  // для отчистки буфера от \n
-    }
-
-    private int inputInt() {
-            while(true) {
-                try {
-
-                    int valueInt = scanner.nextInt();
-
-                    scanner.nextLine();  // для отчистки буфера от \n
-
-                    return valueInt;
-                } catch (InputMismatchException e) {
-                    exceptionMessage();
-                }
-            }
-    }
-
-    private String inputString() {
-
-        String valueString = scanner.nextLine();
-
-        return valueString;
-    }
 }
