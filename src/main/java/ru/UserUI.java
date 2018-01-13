@@ -124,7 +124,7 @@ public class UserUI extends Input{
             System.out.println(forChangeShouldNameId);
 
             // передача введеных пользователем данных для обработки с введенной командой
-            tracker.changeProduct(writeNameProduct() ,writeIdProduct());
+            tracker.changeProductMethod(writeNameProduct() ,writeIdProduct());
 
             // возврат к меню
             init();
