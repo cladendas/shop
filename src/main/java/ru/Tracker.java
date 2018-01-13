@@ -5,6 +5,9 @@ package ru;
 // поиск, удаление, добавление, изменение
 // содержит массив для хранения продуктов
 public class Tracker extends Input{
+
+    //TrackerChangeProduct changeProduct = new TrackerChangeProduct();
+
     // массив products типа Product хранит прожукты (5 штук)
     Product[] products = new Product[5];
 
@@ -73,110 +76,12 @@ public class Tracker extends Input{
     // когда продукт найден, выводится меню с пунктами возможных действий с данными искомого продукта
     // после выбора какого-либо пункта меню, пользователю указывют на необходимость ввода данных,
     // необходимых для выполнения введенной команды
-    public void changeProduct (String nameProduct, int id) {
-
-        // инстанс, в его конструктор передаются входящие параметры метода с 0 ценой
-        Product prod = new Product (nameProduct, 0, id);
-
-        // переменные для хранения пунктов меню
-        final String menuChangeSectionNAME = ". Наименование\n";
-        final String menuChangeSectionPRICE = ". Цена\n";
-        final String menuChangeSectionID = ". Артикул\n";
-        final String menuChangeSectionCANCEL = ". Отмена\n";
-
-        // переменные для хранения нумерации пунктов меню
-        final int nameChange = 0;
-        final int priceChange = 1;
-        final int idChange = 2;
-        final int cancelChange = 3;
-
-        // переменная для сбора меню
-        String menuChangeStart = nameChange + menuChangeSectionNAME + priceChange + menuChangeSectionPRICE +
-                idChange + menuChangeSectionID + cancelChange + menuChangeSectionCANCEL;
-
-        // переменная для хранения индекса элемента массива, данные которого необходимо изменить
-        int findChangeProdIndex = 0;
-
-        // цикл для сравнения элементов массива products с созданным инстансом
-        // индекс элемента, который соответствует созданному инстансу, заносится в переменную findChangeProdIndex
-        // затем выводится сообщение, что искомый элемент найден
-        // затем выводятся его данные: имя, цена и артикул
-        for (int i = 0; i < products.length; i++) {
-            if (products[i] != null && prod.equals(products[i])) {
-                findChangeProdIndex = i;
-                System.out.println("продукт для изменения найден");
-                System.out.println(products[i].getName() + " " + products[i].getPrice() + " " + products[i].getId());
-                break;
-            } else {
-                System.out.println("совпадений не найдено");
-
-                // выводим основное меню
-                new UserUI().init();
-            }
-        }
-
-        // цикл для вывода меню
-        // после выполнения какого-либо из пунктов меню будет выводиться до тех пор,
-        // пока не поступит команда ОТМЕНА
-        while(true) {
-            System.out.println("Что изменить в найденом продукте...");
-            System.out.println(menuChangeStart);
-
-                // переменная для хранения введенного пользователем пункта меню
-                int choiceChange = inputInt();
-
-                // проверка, что введеное пользователем число находится в диапазоне чисел, соответствующих пунктам меню
-                if (choiceChange > 3 || choiceChange < 0) {
-                    System.out.println("Необходимо указать цифру, соответствующую выбранному полю меню...");
-                    continue;
-
-                } else if (choiceChange == nameChange) {
-                    // сообщение-указание на необходимость ввода нового имени
-                    System.out.println("Введи новое имя...");
-
-                    // переменная для хранения введенного пользователем нового имени
-                    String choiceNewName = inputString();
-
-                    // изменение имени искомого продукта с использованием индекса этого продукта и метода
-                    // класса Product для изменения имени продукта на введеное пользователем имя
-                    // после изменения имени, цикл начинается заново с меню метода для изменения продукта
-                    products[findChangeProdIndex].setName(choiceNewName);
-                    continue;
-
-
-                } else if (choiceChange == priceChange) {
-                    // сообщение-указание на необходимость ввода новой цены
-                    System.out.println("Введи новую цену...");
-
-                    // проверка на возникновение исключения, если пользователь введет не целое положительное число
-                    // переменная для хранения введенной пользователем новой цены
-                    int choiceNewPrice = inputInt();
-
-                    // изменение цены искомого продукта с использованием индекса этого продукта и метода
-                    // класса Product для изменения цены продукта на введеную пользователем цену
-                    // после изменения цены, цикл начинается заново с меню метода для изменения продукта
-                    products[findChangeProdIndex].setPrice(choiceNewPrice);
-
-
-                } else if (choiceChange == idChange) {
-                    // сообщение-указание на необходимость ввода нового артикула
-                    System.out.println("Введи новый артикул...");
-
-                    // переменная для хранения введенной пользователем новой цены
-                    int choiceNewId = inputInt();
-
-                    // изменение артикула искомого продукта с использованием индекса этого продукта и метода
-                    // класса Product для изменения артикула продукта на введеный пользователем артикул
-                    // после изменения артикула, цикл начинается заново с меню метода для изменения продукта
-                    products[findChangeProdIndex].setId(choiceNewId);
-
-                    // выход из метода изменения продукта
-                } else if (choiceChange == cancelChange) {
-                    break;
-                }
-
-            }
+    public void changeProductMethod (String nameProduct, int id) {
+        Product prod = new Product(nameProduct, 0, id);
+        TrackerChangeProduct changeProduct = new TrackerChangeProduct();
+        changeProduct.changeProductFindIndex(prod);
     }
+
 
     // метод для вывода в консоль всех продуктов
     // выводяся имена, цены и артикулы продуктов
