@@ -9,7 +9,7 @@ public class Tracker extends Input{
     //TrackerChangeProduct changeProduct = new TrackerChangeProduct();
 
     // массив products типа Product хранит прожукты (5 штук)
-    Product[] products = new Product[5];
+    static Product[] products = new Product[5];
 
     // переменная index необходима для занесения продуктов в массив products поочередно в каждую ячейку
     // недочет: index будет увеличиваться при добавлении новых элементов в массив products,
