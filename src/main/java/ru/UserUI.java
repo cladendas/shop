@@ -44,7 +44,7 @@ public class UserUI extends Input{
     String forChangeShouldNameId = "Для этого действия необходимо ввести наименование и артикул продукта, данные которого хотите изменить...";
 
     // переменная для хранения имени пользователя
-    String name;
+    static String name;
 
     public static void main(String[] args) {
 
