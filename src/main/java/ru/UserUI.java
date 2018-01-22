@@ -1,5 +1,10 @@
 package ru;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 //класс для взаимодействия с пользователем
 public class UserUI extends Input{
 
@@ -25,7 +30,7 @@ public class UserUI extends Input{
     //переменная для хранения ключа SHOWALL - вывод всех продуктов в консоль
     final int SHOWALL = 4;
     //переменная для хранения ключа EXIT - выход из программы
-    final int EXIT = 5;
+    static final int EXIT = 5;
 
     // переменная для хранения всех пунктов меню в сборе и с указанием номера каждого пункта
     String menuStart = ADD + menuSectionADD + REMOVE + menuSectionREMOVE + CHANGE + menuSectionCHANGE + FIND + menuSectionFIND +
@@ -47,6 +52,37 @@ public class UserUI extends Input{
     static String name;
 
     public static void main(String[] args) {
+
+        Map<Integer, Product> exampleHashMap = new HashMap();
+        Product potato = new Product("картошка", 44,1);
+
+        // добавление в множество пары ключ-значение
+        exampleHashMap.put(potato.getId(), potato);
+
+        System.out.println(exampleHashMap);
+
+        // возвращает true, если коллекция содержит ключ k
+        boolean beKey1 = exampleHashMap.containsKey(1);
+        boolean beKey2 = exampleHashMap.containsKey(2);
+
+        // возвращает true, если коллекция содержит значение v
+        boolean beValuePotato = exampleHashMap.containsValue(potato);
+
+        // возвращает набор всех ключей множества
+        Set keySet = exampleHashMap.keySet();
+
+        // возвращает значение объекта, ключ которого равен k
+        Product pot = exampleHashMap.get(potato.getId());
+
+        // удаляет объект с ключом k
+       // exampleHashMap.remove(potato.getId());
+
+        // возвращает набор всех значений множества
+        Collection values = exampleHashMap.values();
+
+
+        System.out.println(beKey1 + " " + beKey2 + " " + beValuePotato + " " + keySet + " " + values + pot);
+
 
         new UserUI().welcome();
 
