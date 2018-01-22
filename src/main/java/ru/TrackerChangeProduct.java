@@ -50,36 +50,38 @@ public class TrackerChangeProduct extends Tracker{
             System.out.println("Необходимо указать цифру, соответствующую выбранному полю меню...");
         } else if (choiceChange == nameChange) {
 
-            System.out.println("веди новое имя...");
+            System.out.println("Введи новое имя...");
             changeProductName(inputString());
+            changeProductMenu();
 
         } else if (choiceChange == priceChange) {
 
             System.out.println("Введи новую цену...");
             changeProductPrice(inputInt());
+            changeProductMenu();
 
         } else if (choiceChange == idChange) {
 
             System.out.println("Введи новый артикул...");
             changeProductId(inputInt());
+            changeProductMenu();
 
         } else if (choiceChange == cancelChange) {
-
+            new UserUI().init();
         }
 
     }
 
-    private void changeProductName(String nameNew) {
+    public void changeProductName(String nameNew) {
         products[changeProductIndex].setName(nameNew);
     }
 
-    private void changeProductPrice(int priceNew) {
+    public void changeProductPrice(int priceNew) {
         products[changeProductIndex].setPrice(priceNew);
     }
 
-    private void changeProductId(int idNew) {
-        products[changeProductIndex].setPrice(idNew);
+    public void changeProductId(int idNew) {
+        products[changeProductIndex].setId(idNew);
     }
-
 
 }
