@@ -14,13 +14,9 @@ public class TrackerChangeProduct extends Tracker{
     final int idChange = 2;
     final int cancelChange = 3;
 
-    private int changeProductIndex = -1;
-
-    public void changeProductFindIndex(Product prod) {
-        if (findProduct(prod.getName(), prod.getId()) != -1) {
-
-            changeProductIndex = findProduct(prod.getName(), prod.getId());
-            changeProductMenu();
+    public void changeProductFindIndex(int id) {
+        if (findProduct(id)) {
+            changeProductMenu(id);
         }
         System.out.println("совпадений не найдено");
 
@@ -28,7 +24,7 @@ public class TrackerChangeProduct extends Tracker{
         new UserUI().init();
     }
 
-    private void changeProductMenu() {
+    private void changeProductMenu(int id) {
 
         // переменная для сбора меню
         String menuChangeStart = nameChange + menuChangeSectionNAME + priceChange + menuChangeSectionPRICE +
@@ -41,47 +37,50 @@ public class TrackerChangeProduct extends Tracker{
         System.out.println(menuChangeStart);
 
         int choiceChange = inputInt();
-        changeProductField(choiceChange);
+        changeProductField(choiceChange, id);
 
     }
 
-    private void changeProductField(int choiceChange) {
+    private void changeProductField(int choiceChange, int id) {
         if (choiceChange > 3 || choiceChange < 0) {
             System.out.println("Необходимо указать цифру, соответствующую выбранному полю меню...");
         } else if (choiceChange == nameChange) {
 
             System.out.println("Введи новое имя...");
-            changeProductName(inputString());
-            changeProductMenu();
-
-        } else if (choiceChange == priceChange) {
-
-            System.out.println("Введи новую цену...");
-            changeProductPrice(inputInt());
-            changeProductMenu();
-
-        } else if (choiceChange == idChange) {
-
-            System.out.println("Введи новый артикул...");
-            changeProductId(inputInt());
-            changeProductMenu();
-
-        } else if (choiceChange == cancelChange) {
-            new UserUI().init();
+            changeProductName(inputString(), id);
+            changeProductMenu(id);
         }
+    }
+//
+//        } else if (choiceChange == priceChange) {
+//
+//            System.out.println("Введи новую цену...");
+//            changeProductPrice(inputInt());
+//            changeProductMenu();
+//
+//        } else if (choiceChange == idChange) {
+//
+//            System.out.println("Введи новый артикул...");
+//            changeProductId(inputInt());
+//            changeProductMenu();
+//
+//        } else if (choiceChange == cancelChange) {
+//            new UserUI().init();
+//        }
+//
+//    }
 
+    public void changeProductName(String nameNew, int id) {
+        Product prod = products.get(id);
+        prod.setName(nameNew);
+        products.put(id, prod);
+    }
+//
+//    public void changeProductPrice(int priceNew) {
+//        products[changeProductIndex].setPrice(priceNew);
+//    }
+//
+//    public void changeProductId(int idNew) {
+//        products[changeProductIndex].setId(idNew);
     }
 
-    public void changeProductName(String nameNew) {
-        products[changeProductIndex].setName(nameNew);
-    }
-
-    public void changeProductPrice(int priceNew) {
-        products[changeProductIndex].setPrice(priceNew);
-    }
-
-    public void changeProductId(int idNew) {
-        products[changeProductIndex].setId(idNew);
-    }
-
-}
