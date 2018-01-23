@@ -53,37 +53,6 @@ public class UserUI extends Input{
 
     public static void main(String[] args) {
 
-        Map<Integer, Product> exampleHashMap = new HashMap();
-        Product potato = new Product("картошка", 44,1);
-
-        // добавление в множество пары ключ-значение
-        exampleHashMap.put(potato.getId(), potato);
-
-        System.out.println(exampleHashMap);
-
-        // возвращает true, если коллекция содержит ключ k
-        boolean beKey1 = exampleHashMap.containsKey(1);
-        boolean beKey2 = exampleHashMap.containsKey(2);
-
-        // возвращает true, если коллекция содержит значение v
-        boolean beValuePotato = exampleHashMap.containsValue(potato);
-
-        // возвращает набор всех ключей множества
-        Set keySet = exampleHashMap.keySet();
-
-        // возвращает значение объекта, ключ которого равен k
-        Product pot = exampleHashMap.get(potato.getId());
-
-        // удаляет объект с ключом k
-       // exampleHashMap.remove(potato.getId());
-
-        // возвращает набор всех значений множества
-        Collection values = exampleHashMap.values();
-
-
-        System.out.println(beKey1 + " " + beKey2 + " " + beValuePotato + " " + keySet + " " + values + pot);
-
-
         new UserUI().welcome();
 
     }
@@ -171,12 +140,12 @@ public class UserUI extends Input{
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
             System.out.println(forThisShouldNameId);
             // передача введеных пользователем данных для обработки с введенной командой
-            int indexProduct = tracker.findProduct(writeNameProduct(), writeIdProduct());
-            if(indexProduct != -1) {
-                System.out.println("такой продукт имеется в списке");
-            } else {
-                System.out.println("в списке такой продукт отсутствует");
-            }
+           // int indexProduct = tracker.findProduct(writeNameProduct(), writeIdProduct());
+//            if(indexProduct != -1) {
+//                System.out.println("такой продукт имеется в списке");
+//            } else {
+//                System.out.println("в списке такой продукт отсутствует");
+//            }
 
             // возврат к меню
             init();
