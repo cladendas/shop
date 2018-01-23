@@ -1,6 +1,5 @@
 package ru;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +21,8 @@ public class Tracker extends Input{
 
     public void findProduct(String nameProduct, int id) {
         if(products.containsKey(id)) {
-            System.out.println("Продукт с артикулом " + id + " имеется в списке");
+            System.out.println("Продукт с артикулом " + id + " имеется в списке\n" + "Его наименование и цена: " +
+                    products.get(id).getName() + products.get(id).getPrice());
         } else {
             System.out.println("Продукт с артикулом " + id + " отсутствует в списке");
         }
