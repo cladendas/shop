@@ -1,5 +1,6 @@
 package ru;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,12 +48,9 @@ public class Tracker extends Input{
      //   changeProduct.changeProductFindIndex(prod);
     }
 
-
-    // метод для вывода в консоль всех продуктов
-    // выводяся имена, цены и артикулы продуктов
-    // каждый продукт с новой строки
-    // если какая-то ячейка массива пуста, то выводитя сообщение, что ячейка пуста
     public void showAllProduct() {
-        System.out.println(products);
+        for (Product prod : products.values()) {
+            System.out.println(prod.getName() + " " + prod.getPrice() + " " + prod.getId());
+        }
     }
 }
