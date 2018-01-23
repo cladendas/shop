@@ -41,6 +41,7 @@ public class UserUI extends Input{
     String writePrice = " , введи цену...";
     String writeId = " , введи артикул...";
     String forThisShouldNameId = "Для этого действия необходимо ввести наименование продукта и его артикул...";
+    String forThisShouldId = "Для этого действия необходимо ввести артикул продукта...";
     String forChangeShouldNameId = "Для этого действия необходимо ввести наименование и артикул продукта, данные которого хотите изменить...";
 
     // переменная для хранения имени пользователя
@@ -77,7 +78,6 @@ public class UserUI extends Input{
         // вывод в консоль меню и сообщения-указания "Select:"
         System.out.println(menuStart + "\nSelect:");
 
-        // переменная для хранения введенного пользователем числа, указывающего на его выбор конкретного пункта меню
         menuChoice(inputInt());  // передача команды пользователя на обработку в метод menuChoice()
     }
     
@@ -109,9 +109,9 @@ public class UserUI extends Input{
             youWriteChoice(choice);
 
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
-            System.out.println(forThisShouldNameId);
+            System.out.println(forThisShouldId);
             // передача введеных пользователем данных для обработки с введенной командой
-            tracker.removeProduct(writeNameProduct() ,writeIdProduct());
+            tracker.removeProduct(writeIdProduct());
 
             // возврат к меню
             init();
@@ -121,10 +121,10 @@ public class UserUI extends Input{
 
             youWriteChoice(choice);
 
-            System.out.println(forChangeShouldNameId);
+            System.out.println(forThisShouldId);
 
             // передача введеных пользователем данных для обработки с введенной командой
-            tracker.changeProductMethod(writeNameProduct() ,writeIdProduct());
+            tracker.changeProductMethod(writeIdProduct());
 
             // возврат к меню
             init();
@@ -133,7 +133,7 @@ public class UserUI extends Input{
         } else if (choice == FIND) {
             youWriteChoice(choice);
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
-            System.out.println(forThisShouldNameId);
+            System.out.println(forThisShouldId);
             tracker.findProduct(writeIdProduct());
             init();
 
