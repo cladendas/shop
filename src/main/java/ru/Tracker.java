@@ -1,6 +1,5 @@
 package ru;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,36 +15,24 @@ public class Tracker extends Input{
         products.put(prod.getId(), prod);
     }
 
-    public void removeProduct(String nameProduct, int id) {
+    public void removeProduct(int id) {
         products.remove(id);
     }
 
-    public void findProduct(String nameProduct, int id) {
+    public boolean findProduct(int id) {
         if(products.containsKey(id)) {
             System.out.println("Продукт с артикулом " + id + " имеется в списке\n" + "Его наименование и цена: " +
-                    products.get(id).getName() + products.get(id).getPrice());
+                    products.get(id).getName() + " " + products.get(id).getPrice());
+            return true;
         } else {
             System.out.println("Продукт с артикулом " + id + " отсутствует в списке");
+            return false;
         }
     }
 
-    // метод для изменения продукта в массиве products
-    // принимает имя и артикул продукта, на их основании создает инстанс продукта с 0 ценой
-    // для дальнейшего использования этого инстанса в работе метода
-    // после создания инстанса метода создаются переменные для хранения пунктов меню
-    // создаются переменные для хранения нумерации пунктов меню
-    // все переменные собираются в меню метода для изменения данных продукта в массиве products
-    // сравниваем каждый элемент массива с созданным инстансом
-    // если в массиве products найден искомый prod, то выводим сообщение, что продукт для изменения найден
-    // в следующей строчке выводим имя продукта, его цену, артикул
-    // если не найден, то ввыводим сообщение об отсутствии совпадений и выводим основное меню
-    // когда продукт найден, выводится меню с пунктами возможных действий с данными искомого продукта
-    // после выбора какого-либо пункта меню, пользователю указывют на необходимость ввода данных,
-    // необходимых для выполнения введенной команды
-    public void changeProductMethod (String nameProduct, int id) {
-        Product prod = new Product(nameProduct, 0, id);
+    public void changeProductMethod (int id) {
         TrackerChangeProduct changeProduct = new TrackerChangeProduct();
-     //   changeProduct.changeProductFindIndex(prod);
+        changeProduct.changeProductFindIndex(id);
     }
 
     public void showAllProduct() {

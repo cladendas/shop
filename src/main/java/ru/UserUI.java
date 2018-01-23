@@ -134,15 +134,7 @@ public class UserUI extends Input{
             youWriteChoice(choice);
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
             System.out.println(forThisShouldNameId);
-            // передача введеных пользователем данных для обработки с введенной командой
-           // int indexProduct = tracker.findProduct(writeNameProduct(), writeIdProduct());
-//            if(indexProduct != -1) {
-//                System.out.println("такой продукт имеется в списке");
-//            } else {
-//                System.out.println("в списке такой продукт отсутствует");
-//            }
-
-            // возврат к меню
+            tracker.findProduct(writeIdProduct());
             init();
 
             // введеная команда соответствует пункту меню SHOWALL

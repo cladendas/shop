@@ -1,6 +1,6 @@
 package ru;
 
-public class TrackerChangeProduct extends Tracker{
+public class TrackerChangeProduct extends Tracker {
 
     // переменные для хранения пунктов меню
     final String menuChangeSectionNAME = ". Наименование\n";
@@ -49,38 +49,41 @@ public class TrackerChangeProduct extends Tracker{
             System.out.println("Введи новое имя...");
             changeProductName(inputString(), id);
             changeProductMenu(id);
+
+        } else if (choiceChange == priceChange) {
+
+            System.out.println("Введи новую цену...");
+            changeProductPrice(inputInt(), id);
+            changeProductMenu(id);
+
+        } else if (choiceChange == idChange) {
+
+            System.out.println("Введи новый артикул...");
+            changeProductId(inputInt(), id);
+            changeProductMenu(id);
+
+        } else if (choiceChange == cancelChange) {
+            new UserUI().init();
         }
     }
-//
-//        } else if (choiceChange == priceChange) {
-//
-//            System.out.println("Введи новую цену...");
-//            changeProductPrice(inputInt());
-//            changeProductMenu();
-//
-//        } else if (choiceChange == idChange) {
-//
-//            System.out.println("Введи новый артикул...");
-//            changeProductId(inputInt());
-//            changeProductMenu();
-//
-//        } else if (choiceChange == cancelChange) {
-//            new UserUI().init();
-//        }
-//
-//    }
 
     public void changeProductName(String nameNew, int id) {
         Product prod = products.get(id);
         prod.setName(nameNew);
         products.put(id, prod);
     }
-//
-//    public void changeProductPrice(int priceNew) {
-//        products[changeProductIndex].setPrice(priceNew);
-//    }
-//
-//    public void changeProductId(int idNew) {
-//        products[changeProductIndex].setId(idNew);
+
+    public void changeProductPrice(int priceNew, int id) {
+        Product prod = products.get(id);
+        prod.setPrice(priceNew);
+        products.put(id, prod);
     }
+
+    public void changeProductId(int idNew, int id) {
+        Product prod = products.get(id);
+        prod.setId(idNew);
+        products.put(prod.getId(), prod);
+        products.remove(id);
+    }
+}
 
