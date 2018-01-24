@@ -1,12 +1,16 @@
 package ru;
 
-//класс для взаимодействия с пользователем
+/*  класс для взаимодействия с пользователем
+    выводит на экран основное меню
+    выводит сообщения-указания на необходимые дейсвтия со стороны пользователя
+    данный класс наследуется от класса Input, который реализует считывание данных с клавиатуры
+ */
 public class UserUI extends Input{
 
     // ссылка на инстанс Tracker
     Tracker tracker = new Tracker();
 
-    // переменные для хранения пунктов меню
+    // переменные для хранения пунктов основного меню
     String menuSectionADD = ". Add\n";
     String menuSectionREMOVE = ". Remove\n";
     String menuSectionCHANGE = ". Change\n";
@@ -40,7 +44,6 @@ public class UserUI extends Input{
     String writeName = " , введи наименование...";
     String writePrice = " , введи цену...";
     String writeId = " , введи артикул...";
-    String forThisShouldNameId = "Для этого действия необходимо ввести наименование продукта и его артикул...";
     String forThisShouldId = "Для этого действия необходимо ввести артикул продукта...";
     String forChangeShouldNameId = "Для этого действия необходимо ввести наименование и артикул продукта, данные которого хотите изменить...";
 
@@ -60,7 +63,9 @@ public class UserUI extends Input{
         String hello = "Представься...";
         System.out.println(hello);
 
-        // считываение введеных данных и занесение их в переменную name, по которой к пользователю будут обращаться, как по имени
+        /*  считываение введеных данных и занесение их в переменную name, по которой к пользователю будут обращаться, как по имени
+            в данном методе для считывания данных используется метод inputString() от класса предка Input
+         */
         name = inputString();
 
         // вызов метода, отвечающего за вывод меню
@@ -70,15 +75,17 @@ public class UserUI extends Input{
     // метод для вывода стартового меню и обработки команд, относящихся к нему
     public void init() {
 
-        // цикл для реализации работы с исключением и возобновления работы программы после возникновения исключения
         // вывод в консоль второго сообщения-указания для выбора дальнейших действий
         String whatDo = ", что сделать?";
         System.out.println(name + whatDo);
 
         // вывод в консоль меню и сообщения-указания "Select:"
-        System.out.println(menuStart + "\nSelect:");
+        System.out.println(menuStart + select);
 
-        menuChoice(inputInt());  // передача команды пользователя на обработку в метод menuChoice()
+        /*  передача команды пользователя на обработку в метод menuChoice()
+            в данном методе для считывания данных используется метод inputInt() от класса предка Input
+         */
+        menuChoice(inputInt());
     }
     
     // метод для обработки команды пользователя
@@ -96,21 +103,32 @@ public class UserUI extends Input{
             // введеная команда соответствует пункту меню ADD
         } else if (choice == ADD) {
 
+            // сообщение о том, какую команду ввел пользователь
             youWriteChoice(choice);
 
             // вывод сообщения о необходимости ввести имя продукта, цену продукта и артикул продукта
             System.out.println(forThisShouldNamePriceId);
+
+            /*  передача введенных данных методу addProduct класса Tracker
+                в данном методе данные считываются с помощью методов writeNameProduct(), writePriceProduct(), writeIdProduct()
+             */
             tracker.addProduct(new Product(writeNameProduct(), writePriceProduct(), writeIdProduct()));
+
+            // возврат к меню
             init();
 
             // введеная команда соответствует пункту меню REMOVE
         } else if (choice == REMOVE) {
 
+            // сообщение о том, какую команду ввел пользователь
             youWriteChoice(choice);
 
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
             System.out.println(forThisShouldId);
-            // передача введеных пользователем данных для обработки с введенной командой
+            
+            /*  передача введеных данных методу removeProduct() класса Tracker
+                в данном методе данные считываются с помощью метода writeIdProduct()
+             */
             tracker.removeProduct(writeIdProduct());
 
             // возврат к меню
@@ -119,11 +137,15 @@ public class UserUI extends Input{
             // введеная команда соответствует пункту меню CHANGE
         } else if (choice == CHANGE) {
 
+            // сообщение о том, какую команду ввел пользователь
             youWriteChoice(choice);
 
+            // вывод сообщения о необходимости ввести артикул продукта
             System.out.println(forThisShouldId);
 
-            // передача введеных пользователем данных для обработки с введенной командой
+            /*  передача введеных данных методу changeProductMethod() класса Tracker
+                в данном методе данные считываются с помощью метода writeIdProduct()
+             */
             tracker.changeProductMethod(writeIdProduct());
 
             // возврат к меню
@@ -131,46 +153,87 @@ public class UserUI extends Input{
 
             // введеная команда соответствует пункту меню FIND
         } else if (choice == FIND) {
+
+            // сообщение о том, какую команду ввел пользователь
             youWriteChoice(choice);
+
             // вывод сообщения о необходимости ввести имя продукта и артикул продукта
             System.out.println(forThisShouldId);
+
+            /*  передача введеных данных методу findProduct() класса Tracker
+                в данном методе данные считываются с помощью метода writeIdProduct()
+             */
             tracker.findProduct(writeIdProduct());
+
+            // возврат к меню
             init();
 
             // введеная команда соответствует пункту меню SHOWALL
         } else if (choice == SHOWALL) {
+
+            // сообщение о том, какую команду ввел пользователь
             youWriteChoice(choice);
+
+            // выполнение метода showAllProduct() класса Tracker
             tracker.showAllProduct();
+
+            // возврат к меню
             init();
 
             // введеная команда соответствует пункту меню EXIT
         } else if (choice == EXIT) {
+
+            // сообщение о том, какую команду ввел пользователь
             youWriteChoice(choice);
         }
     }
 
+    // метод для вывода на экран введеной пользователем команды
     private void youWriteChoice(int choice) {
 
         System.out.println(youWrite + choice);
 
     }
 
+    /*  метод для считывания введоного пользователем наименования продукта
+        возвращает введеное наименование
+     */
     private String writeNameProduct() {
+
+        // вывод сообщения-указания о вводе наименования
         System.out.println(name + writeName);
+
+        // для считывания данных используется метод inputInt() от класса предка Input
         String nameProduct = inputString();
+        
         return nameProduct;
     }
 
+    /*  метод для считывания введоную пользователем цену продукта
+        возвращает введеную цену
+     */
     private int writePriceProduct() {
-                System.out.println(name + writePrice);
-                int priceProduct = inputInt();
-                return priceProduct;
+
+        // вывод сообщения-указания о вводе цены
+        System.out.println(name + writePrice);
+
+        // в данном методе для считывания данных используется метод inputInt() от класса предка Input
+        int priceProduct = inputInt();
+        
+        return priceProduct;
     }
 
+    /*  метод для считывания введоного пользователем артикула продукта
+        возвращает введеный артикул
+     */
     private int writeIdProduct() {
-                System.out.println(name + writeId);
-                int idProduct = inputInt();
-                return idProduct;
-    }
 
+        // вывод сообщения-указания о вводе артикула
+        System.out.println(name + writeId);
+
+        // в данном методе для считывания данных используется метод inputInt() от класса предка Input
+        int idProduct = inputInt();
+        
+        return idProduct;
+    }
 }
