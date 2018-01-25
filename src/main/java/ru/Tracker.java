@@ -74,8 +74,9 @@ public class Tracker extends Input{
          */
         TrackerChangeProduct changeProduct = new TrackerChangeProduct();
 
-        // артикул продукта передается методу changeProductFindIndex() для определения наличия такого продукта в множестве
-        changeProduct.changeProductFindIndex(id);
+        // артикул продукта передается методу changeProductThereIs() для определения наличия такого продукта в множестве
+        // управление передается классу TrackerChangeProduct
+        changeProduct.changeProductThereIs(id);
     }
 
     // метод для вывода на экран всех продуктов из множества с указанием их наименований, цен и артикулов
