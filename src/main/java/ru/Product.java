@@ -5,7 +5,8 @@ package ru;
 // поле name - наименование продукта, поле price - цена продукта, поле id - артикул продукта
 // есть явно заданный конструктор
 // методы для возврата и установки имени
-// меотды для возврата и установки цены
+// методы для возврата и установки цены
+// методы для возврата и установки артикула
 public class Product {
     // перемененная для описания имени продукта
     private String name;
@@ -13,8 +14,9 @@ public class Product {
     private int price;
     // переменная для описания артикула продукта
     private int id;
+
     // конструктор класса
-    // принимает имя и цену продукта
+    // принимает имя, цену и артикул продукта
     public Product(String name, int price, int id) {
         this.name = name;
         this.price = price;
@@ -24,22 +26,28 @@ public class Product {
     public String getName() {
         return name;
     }
+
     // метод для утсановки именя
     public void setName(String name) {
         this.name = name;
     }
+
     // метод для возврата цены
     public int getPrice() {
         return price;
     }
-    // метод для возврата цены
+
+    // метод для установки цены
     public void setPrice(int price) {
         this.price = price;
     }
 
+    // метод для возврата артикула
     public int getId() {
         return id;
     }
+
+    // метод для установки артикула
     public void setId(int id) {
         this.id = id;
     }
