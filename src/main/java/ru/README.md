@@ -117,6 +117,9 @@
 	Войти в командную строку MySQL: /usr/local/mysql-5.5.48-osx10.8-x86_64/bin/mysql -u root -p;
 	Здесь -u означает пользователя, а -p означает пароль. Обязательно заканчивать команду точкой с запятой.
 	SHOW DATABASES;
-	SHOW TABLES FROM dataBase
+	SHOW TABLES FROM testBase;
+	SHOW COLUMNS FROM testBase; // покажет все столбцы указанной таблицы
+	SELECT column_list FROM testBase; // покажет столбец column_list из таблицы testBase
+
 
 
