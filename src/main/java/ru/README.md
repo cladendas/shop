@@ -120,6 +120,11 @@
 	SHOW TABLES FROM testBase;
 	SHOW COLUMNS FROM testBase; // покажет все столбцы указанной таблицы
 	SELECT column_list FROM testBase; // покажет столбец column_list из таблицы testBase
-
+	CREATE TABLE products (name VARCHAR(20), price SMALLINT(20), id SMALLINT(20)); // создание таблицы products с полем name, в котором тип хранимых данных VARCHAR, размер поля 20 и т.д.
+	SELECT DISTINCT name FROM products ORDER BY name; // выбирает данные поля name без повторений (DISTINCT), затем сортирует (ORDER BY) по полю name
+	SELECT * FROM products WHERE id = 222; // выбирает данные со всех полей (*), которые имеют поле id равное 222 (WHERE id = 222) 
+	SHOW CHARACTER SET; // показывает кодировки, поддерживаемые установленной MySQL
+	CREATE DATABASE unicodTest character set utf8; // создание базы данных с кодировкой utf8 (character set utf8)
+	DROP DATABASE products; // удаление базы данных
 
 
