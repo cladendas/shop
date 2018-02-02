@@ -133,3 +133,6 @@
 	http://www.mysql.ru/docs/man/mysqlimport.html
 
 	INSERT INTO products VALUES('виноград','444','66'); // добавление новой строки в таблицу
+	DELETE FROM products WHERE name='виноград' // удаление строки, в которой столбец имеет запись 'виноград'
+	DELETE FROM products; // удаление всех записей из таблицы
+	UPDATE products SET id = '666' WHERE name = 'капуста'; // изменение значения в столбце id в строке со значением 'капуста'
