@@ -126,5 +126,10 @@
 	SHOW CHARACTER SET; // показывает кодировки, поддерживаемые установленной MySQL
 	CREATE DATABASE unicodTest character set utf8; // создание базы данных с кодировкой utf8 (character set utf8)
 	DROP DATABASE products; // удаление базы данных
+	USE testBase; // выбор базы данных для работы
+	LOAD DATA LOCAL INFILE "/Users/cladendas/Desktop/testTable.txt" INTO TABLE products; // импорт данных в таблицу из файла
 
+	http://slusar.su/uroki/izuchaem-sql-vse-uroki/
+	http://www.mysql.ru/docs/man/mysqlimport.html
 
+	INSERT INTO products VALUES('виноград','444','66'); // добавление новой строки в таблицу
