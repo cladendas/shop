@@ -9,21 +9,33 @@ public class MySQLConnect {
     public static void main(String[] args) {
 
 
-
         System.out.println("------- Проверка подключения к MySQL -------");
          
         Connection connection = null;
         try {
+
+            // подключение к базе с указанием протокола:подпротокола://[хоста]:[порта_СУБД]/[БД]
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testBase","root", "1234");
+
             System.out.println("------- Подключение установлено -------\n\n\n");
+
+            // создание объекта для SQl запросов без параметром
             Statement statement = null;
             statement = connection.createStatement();
 
+            // выполнение запроса
+            // здесь: вывод всех столбцов таблицы products
             ResultSet rs = statement.executeQuery("SELECT * FROM products");
 
+            // переменная для хранения количества колонок в результирующем запросе
             int columns = rs.getMetaData().getColumnCount();
+
+            // цикл для вывода каждой строки таблицы
+            // метод next() используется к следующей строке
             while(rs.next()){
                 for (int i = 1; i <= columns; i++){
+
+                    // вывод данных каждого столбца-строки
                     System.out.print(rs.getString(i) + "\t");
                 }
                 System.out.println();
