@@ -136,3 +136,35 @@
 	DELETE FROM products WHERE name='виноград' // удаление строки, в которой столбец имеет запись 'виноград'
 	DELETE FROM products; // удаление всех записей из таблицы
 	UPDATE products SET id = '666' WHERE name = 'капуста'; // изменение значения в столбце id в строке со значением 'капуста'
+
+03.02.18
+	Как подключаться к базе MySQL:
+		1) как я понял в JAVA есть драйвер доступа к базам данных JDBC, который способен сам понять, с какой базой данных работать
+		2) драйвер JDBC можно использовать в проекте maven, прописав зависимость в pom.xml:
+			<dependency>
+            	<groupId>mysql</groupId>
+            	<artifactId>mysql-connector-java</artifactId>
+            	<version>5.1.36</version>
+        	</dependency>
+        3) в необходимом классе добавить импорт библиотеки для работы с SQL:
+        	import java.sql.*;
+        4) вся работа с базой данных ведется в блоке try-catch
+        5) в указанном блоке делается подключение в базе данных:
+        	подключение к базе с указанием протокола:подпротокола://[хоста]:[порта_СУБД]/[БД]
+        	Connection connection = null;
+        	connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testBase","root", "1234");
+        6) создается объект для SQl запросов без параметром:
+        	Statement statement = null;
+            statement = connection.createStatement();
+        7) выполняется запрос
+            ResultSet rs = statement.executeQuery("SELECT * FROM products");
+        8) пример вывода данных:
+        	// цикл для вывода каждой строки таблицы
+            // метод next() используется для перехода к следующей строке
+            while(rs.next()){
+                for (int i = 1; i <= columns; i++){
+                    // вывод данных каждого столбца-строки
+                    System.out.print(rs.getString(i) + "\t");
+                }
+                System.out.println();
+            }
