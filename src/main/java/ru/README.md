@@ -156,7 +156,7 @@
         6) создается объект для SQl запросов без параметром:
         	Statement statement = null;
             statement = connection.createStatement();
-        7) выполняется запрос
+        7) выполняется запрос с занесением результата в объект класса ResultSet
             ResultSet rs = statement.executeQuery("SELECT * FROM products");
         8) пример вывода данных:
         	// цикл для вывода каждой строки таблицы
@@ -168,3 +168,10 @@
                 }
                 System.out.println();
             }
+
+    Класс Statement нужен для выполнения запросов:
+    	1) statement.executeQuery("SELECT * FROM products");
+    	2) statement.executeUpdate("INSERT INTO products VALUES('виноград','444','66')");
+    Класс ResultSet нужен для хранения результатов запросов
+
+
