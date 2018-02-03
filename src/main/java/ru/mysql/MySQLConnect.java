@@ -7,7 +7,9 @@ import java.util.logging.Logger;
 public class MySQLConnect {
      
     public static void main(String[] args) {
-         
+
+
+
         System.out.println("------- Проверка подключения к MySQL -------");
          
         Connection connection = null;
