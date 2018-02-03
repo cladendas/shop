@@ -173,5 +173,7 @@
     	1) statement.executeQuery("SELECT * FROM products");
     	2) statement.executeUpdate("INSERT INTO products VALUES('виноград','444','66')");
     Класс ResultSet нужен для хранения результатов запросов
+    Метод executeQuery() класса Statement необходимо использовать при выполнении однотипных запросов типа SELECT.
+    Метод executeUpdate() следует использовать, как для выполнения операторов управления данными типа INSERT, UPDATE или DELETE (DML - Data Manipulation Language), так и для операторов определения структуры базы данных CREATE TABLE, DROP TABLE (DDL - Data Definition Language).
 
 
